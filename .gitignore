@@ -1,0 +1,9 @@
+src/YOM.Business/bin/*
+src/YOM.Business/obj/*
+src/YOM.Web/bin/*
+src/YOM.Web/obj/*
+src/YOM.suo
+src/YOM.Web/YOM.Web.csproj.user
+src/YOM.Business/YOM.Business.csproj.user
+src/YOM.sln.docstates
+src/packages

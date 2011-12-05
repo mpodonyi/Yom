@@ -1,0 +1,47 @@
+﻿@using (Html.BeginForm())
+{
+    <div data-role="fieldcontain">
+        <label for="name">
+            Name:</label>
+        <input type="text" name="name" id="name" value="" />
+    </div>
+    <div data-role="fieldcontain">
+        <label for="amount">
+            Amount:</label>
+        <input type="number" name="amount" id="amount" value="" />
+    </div>
+     
+    
+
+    
+    <ul data-role="listview" class="ui-listview">
+        <li class="ui-li ui-li-static ui-body-c">
+            <p class="ui-li-aside ui-li-desc">
+               test
+            </p>
+            <h3 class="ui-li-heading">
+                Stephen Weber</h3>
+            <p class="ui-li-desc">
+                <strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+            <p class="ui-li-desc">
+                Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the
+                jQuery team.</p>
+        </li>
+        <li class="ui-li ui-li-static ui-body-c">
+            <p class="ui-li-aside ui-li-desc">
+                <input type="checkbox" name="checkbox-2" class="custom" />
+            </p>
+            <h3 class="ui-li-heading">
+                jQuery Team</h3>
+            <p class="ui-li-desc">
+                <strong>Boston Conference Planning</strong></p>
+            <p class="ui-li-desc">
+                In preparation for the upcoming conference in Boston, we need to start gathering
+                a list of sponsors and speakers.</p>
+        </li>
+    </ul>
+     
+     
+     
+     
+}

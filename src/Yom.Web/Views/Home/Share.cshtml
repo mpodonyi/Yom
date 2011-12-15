@@ -14,30 +14,32 @@
     
 
     
-    <ul data-role="listview" class="ui-listview">
-        <li class="ui-li ui-li-static ui-body-c">
-            <p class="ui-li-aside ui-li-desc">
-               test
+    <ul data-role="listview" data-inset="true">
+        <li>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <input type="checkbox" name="checkbox-0" id="checkbox-0" />
+                    <label for="checkbox-0">
+                        mikepodonyi@gmail.com</label></div>
+                <div class="ui-block-b">
+                    <label for="amount1" class="ui-hidden-accessible">
+                        Amount:</label>
+                    <input type="number" name="amount1" id="amount1" value=""  />
+                </div>
+            </div>
+            <!-- /grid-a -->
+        </li>
+        <li>
+            <p class=" ui-li-aside">
+                test
             </p>
-            <h3 class="ui-li-heading">
+            <h3>
                 Stephen Weber</h3>
-            <p class="ui-li-desc">
+            <p>
                 <strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
-            <p class="ui-li-desc">
+            <p>
                 Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the
                 jQuery team.</p>
-        </li>
-        <li class="ui-li ui-li-static ui-body-c">
-            <p class="ui-li-aside ui-li-desc">
-                <input type="checkbox" name="checkbox-2" class="custom" />
-            </p>
-            <h3 class="ui-li-heading">
-                jQuery Team</h3>
-            <p class="ui-li-desc">
-                <strong>Boston Conference Planning</strong></p>
-            <p class="ui-li-desc">
-                In preparation for the upcoming conference in Boston, we need to start gathering
-                a list of sponsors and speakers.</p>
         </li>
     </ul>
      

@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Yom.Lib.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PathToAspNetRegSql" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_regsql.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

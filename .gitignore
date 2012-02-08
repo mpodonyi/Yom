@@ -7,3 +7,8 @@ src/YOM.Web/YOM.Web.csproj.user
 src/YOM.Business/YOM.Business.csproj.user
 src/YOM.sln.docstates
 src/packages
+src/YOM.Lib/bin/*
+src/YOM.Lib/obj/*
+src/YOM.CreateDatabase/bin/*
+src/YOM.CreateDatabase/obj/*
+src/YOM.Lib/YOM.Lib.csproj.user

@@ -1,0 +1,31 @@
+﻿@model Yom.Web.Models.ReferenceUser.ReferenceUserCreateModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.Single.Mobile.cshtml";
+}
+@*MP: try in as future Version of jquery mobile ToolboxDataAttribute run IRouteWithArea out Ajax disabled*@
+@using (Html.BeginForm(null, null, FormMethod.Post, new { data_ajax = "false" })) 
+{
+    @Html.ValidationSummary(false)
+    <div data-role="fieldcontain">
+        @Html.LabelFor(model => model.FirstName)
+        @Html.EditorFor(model => model.FirstName)
+        @*@Html.ValidationMessageFor(model => model.FirstName, "*")*@
+    </div>
+    
+    <div data-role="fieldcontain">
+        @Html.LabelFor(model => model.LastName)
+        @Html.EditorFor(model => model.LastName)
+        @*@Html.ValidationMessageFor(model => model.LastName, "*")*@
+    </div>
+
+    <div data-role="fieldcontain">
+        @Html.LabelFor(model => model.Mail)
+        @Html.EditorFor(model => model.Mail)
+        @*@Html.ValidationMessageFor(model => model.Mail, "*")*@
+    </div>
+
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+}

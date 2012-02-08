@@ -20,9 +20,6 @@ namespace Yom.Web.Controllers
             return View();
         }
 
-        public ActionResult Share()
-        {
-            return View();
-        }
+        
     }
 }

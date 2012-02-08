@@ -6,50 +6,256 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Yom.Web.Models;
+using DotNetOpenAuth.OpenId.RelyingParty;
+using DotNetOpenAuth.OpenId;
+using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
+using DotNetOpenAuth.Messaging;
+using Yom.Web.Services;
+using Yom.Web.Models.User;
 
 namespace Yom.Web.Controllers
 {
     public class AccountController : Controller
     {
+        private static OpenIdRelyingParty openid = new OpenIdRelyingParty();
 
-        //
-        // GET: /Account/LogOn
+        IUserService UserService;
 
-        public ActionResult LogOn()
+        public AccountController()
         {
-            return View();
+            UserService = new UserService();
         }
 
-        //
-        // POST: /Account/LogOn
 
-        [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        //[ValidateInput(false)]
+        //public ActionResult Authenticate(string returnUrl)
+        //{
+        //    var response = openid.GetResponse();
+        //    if (response == null)
+        //    {
+        //        // Stage 2: user submitting Identifier
+        //        Identifier id;
+        //        if (Identifier.TryParse(Request.Form["openid_identifier"], out id))
+        //        {
+        //            try
+        //            {
+        //                var request = openid.CreateRequest(Request.Form["openid_identifier"]);
+
+        //                //Ask user for their email address
+        //                ClaimsRequest fields = new ClaimsRequest();
+        //                fields.Email = DemandLevel.Require;
+        //                fields.FullName = DemandLevel.Require;
+        //                request.AddExtension(fields);
+                        
+        //                return request.RedirectingResponse.AsActionResult();
+        //            }
+        //            catch (ProtocolException ex)
+        //            {
+        //                ViewData["Message"] = ex.Message;
+        //                return View("LogOn");
+        //            }
+        //        }
+
+        //        ViewData["Message"] = "Invalid identifier";
+        //        return View("LogOn");
+        //    }
+
+        //    // Stage 3: OpenID Provider sending assertion response
+        //    switch (response.Status)
+        //    {
+        //        case AuthenticationStatus.Authenticated:
+        //            MembershipUser user = Membership.GetUser(response.ClaimedIdentifier);
+        //            if (user == null)
+        //            {
+        //                MembershipCreateStatus membershipCreateStatus;
+
+
+        //                //Get custom fields for user
+        //                var sreg = response.GetExtension<ClaimsResponse>();
+        //                if (sreg != null)
+        //                    Membership.CreateUser(response.ClaimedIdentifier, "12345", sreg.Email, "", "", true, out membershipCreateStatus);
+        //                else
+        //                    Membership.CreateUser(response.ClaimedIdentifier, "12345", "john@doe.com", "", "", true, out membershipCreateStatus);
+
+        //                if (membershipCreateStatus == MembershipCreateStatus.Success)
+        //                {
+        //                    FormsAuthentication.SetAuthCookie(response.ClaimedIdentifier, false);
+        //                    //FormsService.SignIn(response.ClaimedIdentifier, false /* createPersistentCookie */);
+        //                    return RedirectToAction("Index", "home");
+        //                }
+        //                ViewData["Message"] = "Error creating new user";
+        //                return View("LogOn");
+        //            }
+
+        //            FormsAuthentication.SetAuthCookie(user.UserName, false);
+        //            if (!string.IsNullOrEmpty(returnUrl))
+        //            {
+        //                return Redirect(returnUrl);
+        //            }
+
+        //            return RedirectToAction("Index", "Home");
+        //        case AuthenticationStatus.Canceled:
+        //            ViewData["Message"] = "Canceled at provider";
+        //            return View("LogOn");
+        //        case AuthenticationStatus.Failed:
+        //            ViewData["Message"] = response.Exception.Message;
+        //            return View("LogOn");
+        //    }
+
+        //    return new EmptyResult();
+        //}
+
+
+ 
+        //public ActionResult LogOn()
+        //{
+        //    var openid = new OpenIdRelyingParty();
+        //    IAuthenticationResponse response = openid.GetResponse();
+ 
+        //    if (response != null)
+        //    {
+        //        switch (response.Status)
+        //        {
+        //            case AuthenticationStatus.Authenticated:
+        //                FormsAuthentication.RedirectFromLoginPage(
+        //                    response.ClaimedIdentifier, false);
+        //                break;
+        //            case AuthenticationStatus.Canceled:
+        //                ModelState.AddModelError("loginIdentifier",
+        //                    "Login was cancelled at the provider");
+        //                break;
+        //            case AuthenticationStatus.Failed:
+        //                ModelState.AddModelError("loginIdentifier",
+        //                    "Login failed using the provided OpenID identifier");
+        //                break;
+        //        }
+        //    }           
+ 
+        //    return View();
+        //}
+
+        
+        public ActionResult LogOn(string openid_identifier, string returnUrl)
         {
-            if (ModelState.IsValid)
+            var response = openid.GetResponse();
+            if (response == null)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                // Stage 2: user submitting Identifier
+                Identifier id;
+                if (Identifier.TryParse(openid_identifier, out id))
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                    try
+                    {
+                        var request = openid.CreateRequest(openid_identifier);
+
+                        //Ask user for their email address
+                        ClaimsRequest fields = new ClaimsRequest();
+                        fields.Email = DemandLevel.Require;
+                        request.AddExtension(fields);
+
+                        return request.RedirectingResponse.AsActionResult();
+                    }
+                    catch (ProtocolException ex)
+                    {
+                        ViewData["Message"] = ex.Message;
+                        return View();
+                    }
+                }
+
+                ViewData["Message"] = "Invalid identifier";
+                return View();
+            }
+
+            // Stage 3: OpenID Provider sending assertion response
+            switch (response.Status)
+            {
+                case AuthenticationStatus.Authenticated:
+                    UserViewModel user = UserService.UserGet(response.ClaimedIdentifier);
+                    if (user == null)
+                    {
+                        MembershipCreateStatus membershipCreateStatus;
+                       
+                        //Get custom fields for user
+                        var sreg = response.GetExtension<ClaimsResponse>();
+                        if (sreg != null)
+                            membershipCreateStatus = UserService.UserCreate(response.ClaimedIdentifier, sreg.Email);
+                            //Membership.CreateUser(response.ClaimedIdentifier, "12345", sreg.Email, "", "", true, out membershipCreateStatus);
+                        else
+                            membershipCreateStatus = UserService.UserCreate(response.ClaimedIdentifier, "john@doe.com"); 
+                            //Membership.CreateUser(response.ClaimedIdentifier, "12345", "john@doe.com", "", "", true, out membershipCreateStatus);
+
+                        if (membershipCreateStatus == MembershipCreateStatus.Success)
+                        {
+                           // FormsAuthentication.RedirectFromLoginPage()
+
+                            FormsAuthentication.SetAuthCookie(response.ClaimedIdentifier, true);
+                            //FormsService.SignIn(response.ClaimedIdentifier, false /* createPersistentCookie */);
+                            return RedirectToAction("Index", "home");
+                        }
+                        ViewData["Message"] = "Error creating new user";
+                        return View();
+                    }
+
+                   // Membership.DeleteUser(user.UserName, true);
+
+                    FormsAuthentication.SetAuthCookie(response.ClaimedIdentifier, true);
+                    if (!string.IsNullOrEmpty(returnUrl))
                     {
                         return Redirect(returnUrl);
                     }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
+
+                    return RedirectToAction("Index", "Home");
+                case AuthenticationStatus.Canceled:
+                    ViewData["Message"] = "Canceled at provider";
+                    return View();
+                case AuthenticationStatus.Failed:
+                    ViewData["Message"] = response.Exception.Message;
+                    return View();
             }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return new EmptyResult();
         }
+
+
+
+        ////
+        //// GET: /Account/LogOn
+
+        //public ActionResult LogOn()
+        //{
+        //    return View();
+        //}
+
+        ////
+        //// POST: /Account/LogOn
+
+        //[HttpPost]
+        //public ActionResult LogOn(LogOnModel model, string returnUrl)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if (Membership.ValidateUser(model.UserName, model.Password))
+        //        {
+        //            FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+        //            if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+        //                && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+        //            {
+        //                return Redirect(returnUrl);
+        //            }
+        //            else
+        //            {
+        //                return RedirectToAction("Index", "Home");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+        //        }
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/LogOff

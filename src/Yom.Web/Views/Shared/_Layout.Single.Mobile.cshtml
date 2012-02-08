@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+}
+@functions{
+    private string PageId
+    {
+        get
+        {
+            return (ViewData.ContainsKey("PageId") ? string.Format("id=\"{0}\"", ViewData["PageId"]) : "");
+        }
+    }
+}
+<div data-role="page" @Html.Raw(PageId)>
+    <div data-role="header">
+        @RenderPage("~/Views/Shared/DefaultHeader.Mobile.cshtml")
+    </div>
+    <!-- /header -->
+    <div data-role="content">
+        @RenderBody()
+    </div>
+    <!-- /content -->
+    <div data-role="footer" data-theme="d">
+    </div>
+    <!-- /footer -->
+</div>

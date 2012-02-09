@@ -36,7 +36,7 @@ namespace Yom.Web
 
         protected void Application_Start()
         {
-            InjectYomContainerConnectionString();
+            //InjectYomContainerConnectionString();
 
             ContainerSetup();
 

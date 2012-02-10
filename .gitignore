@@ -6,6 +6,7 @@ src/YOM.suo
 src/YOM.Web/YOM.Web.csproj.user
 src/YOM.Business/YOM.Business.csproj.user
 src/YOM.sln.docstates
+src/YOM.sln.docstates.suo
 src/packages
 src/YOM.Lib/bin/*
 src/YOM.Lib/obj/*

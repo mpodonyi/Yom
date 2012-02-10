@@ -8,7 +8,7 @@ using Yom.Lib.Data.EF;
 
 namespace Yom.Web.Services
 {
-    public class ReferenceUserService : IReferenceUserService
+    public class ReferenceUserService :BaseService, IReferenceUserService
     {
         private IUserService UserService;
 
@@ -24,7 +24,7 @@ namespace Yom.Web.Services
         {
             try
             {
-                using (YomContainer container = new YomContainer())
+                using (YomContainer container = GetYomContainer())
                 {
                     var referenceUser = container.ReferenceUsers.Add(new ReferenceUser()
                     {
@@ -51,7 +51,7 @@ namespace Yom.Web.Services
         {
             long userId = UserService.UserGetCurrent().Id;
 
-            using (YomContainer container = new YomContainer())
+            using (YomContainer container = GetYomContainer())
             {
                 return (from i in container.ReferenceUsers
                         where i.UserId == userId

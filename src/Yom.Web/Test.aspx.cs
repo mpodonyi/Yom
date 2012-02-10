@@ -17,7 +17,7 @@ namespace Yom.Web
         public string TestValue
         {
             get {
-                return System.Web.Configuration.WebConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
+                return "";// System.Web.Configuration.WebConfigurationManager.ConnectionStrings["YomContainer"].ConnectionString;
             }
         }
     }

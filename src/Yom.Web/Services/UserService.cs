@@ -8,7 +8,7 @@ using Yom.Lib.Data.EF;
 
 namespace Yom.Web.Services
 {
-    public class UserService : IUserService
+    public class UserService :BaseService, IUserService
     {
         #region IUserService Members
 
@@ -17,7 +17,7 @@ namespace Yom.Web.Services
             Guid providerUserKey = Guid.NewGuid();
             User user;
 
-            using (YomContainer container = new YomContainer())
+            using (YomContainer container = GetYomContainer())
             {
                 user = container.Users.Add(new User() { ProviderUserKey = providerUserKey });
 
@@ -30,7 +30,7 @@ namespace Yom.Web.Services
 
             //if (membershipCreateStatus == System.Web.Security.MembershipCreateStatus.Success)
             //{
-            //    using (var db = new YomContainer())
+            //    using (var db = GetYomContainer())
             //    {
             //        db.Users.Add(new User { Mail = email, ProviderUserKey = Guid.NewGuid() });
 
@@ -45,7 +45,7 @@ namespace Yom.Web.Services
 
         private User GetOrCreate(Guid providerUserKey)
         {
-            using (YomContainer container = new YomContainer())
+            using (YomContainer container = GetYomContainer())
             {
                 User currentYomUser = container.Users.SingleOrDefault(user => user.ProviderUserKey == providerUserKey);
 

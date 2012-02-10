@@ -68,6 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Yom.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\EF\Yom.Context.partial.cs" />
     <Compile Include="Data\EF\Yom.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

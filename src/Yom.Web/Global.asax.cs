@@ -34,10 +34,12 @@ namespace Yom.Web
 
         }
 
+        
+
         protected void Application_Start()
         {
             //InjectYomContainerConnectionString();
-
+            
             ContainerSetup();
 
             AreaRegistration.RegisterAllAreas();
@@ -46,24 +48,24 @@ namespace Yom.Web
             RegisterRoutes(RouteTable.Routes);
         }
 
-        private void InjectYomContainerConnectionString()
-        {
-            var configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-            var appconnectionString = configuration.ConnectionStrings.ConnectionStrings["ApplicationServices"].ConnectionString;
-            var yomconnectionString = configuration.ConnectionStrings.ConnectionStrings["YomContainer"].ConnectionString;
+        //private void InjectYomContainerConnectionString()
+        //{
+        //    var configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+        //    var appconnectionString = configuration.ConnectionStrings.ConnectionStrings["ApplicationServices"].ConnectionString;
+        //    var yomconnectionString = configuration.ConnectionStrings.ConnectionStrings["YomContainer"].ConnectionString;
 
-            EntityConnectionStringBuilder builder = new EntityConnectionStringBuilder(yomconnectionString);
-            builder.ProviderConnectionString = appconnectionString;
+        //    EntityConnectionStringBuilder builder = new EntityConnectionStringBuilder(yomconnectionString);
+        //    builder.ProviderConnectionString = appconnectionString;
 
 
-            //if (!connectionString.Contains("MultipleActiveResultSets=True;"))
-            //{
-            //    connectionString += "MultipleActiveResultSets=True;";
-            //}
+        //    //if (!connectionString.Contains("MultipleActiveResultSets=True;"))
+        //    //{
+        //    //    connectionString += "MultipleActiveResultSets=True;";
+        //    //}
 
-            configuration.ConnectionStrings.ConnectionStrings["YomContainer"].ConnectionString = builder.ConnectionString;
-            configuration.Save();
-        }
+        //    configuration.ConnectionStrings.ConnectionStrings["YomContainer"].ConnectionString = builder.ConnectionString;
+        //    configuration.Save();
+        //}
 
 
 

@@ -8,7 +8,7 @@ using Yom.Lib.Data.EF;
 
 namespace Yom.Web.Services
 {
-    public class DebtService : IDebtService
+    public class DebtService :BaseService, IDebtService
     {
         private IUserService UserService;
 
@@ -24,7 +24,7 @@ namespace Yom.Web.Services
         {
             try
             {
-                using (YomContainer container = new YomContainer())
+                using (YomContainer container = GetYomContainer())
                 {
                     Item item = container.Items.Add(new Item
                     {

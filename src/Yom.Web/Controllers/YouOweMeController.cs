@@ -61,7 +61,10 @@ namespace Yom.Web.Controllers
             return View();
         }
 
-
+        public ViewResult Success()
+        {
+            return View();
+        }
 
         //
         // POST: /YouOweMe/Create
@@ -75,7 +78,7 @@ namespace Yom.Web.Controllers
 
                 if (retVal.IsSuccessful)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Success");
                 }
                 else
                 {
@@ -86,56 +89,56 @@ namespace Yom.Web.Controllers
             return View();
         }
 
-        //
-        // GET: /YouOweMe/Edit/5
+        ////
+        //// GET: /YouOweMe/Edit/5
 
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    return View();
+        //}
 
-        //
-        // POST: /YouOweMe/Edit/5
+        ////
+        //// POST: /YouOweMe/Edit/5
 
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        //[HttpPost]
+        //public ActionResult Edit(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
-        //
-        // GET: /YouOweMe/Delete/5
+        ////
+        //// GET: /YouOweMe/Delete/5
 
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
 
-        //
-        // POST: /YouOweMe/Delete/5
+        ////
+        //// POST: /YouOweMe/Delete/5
 
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

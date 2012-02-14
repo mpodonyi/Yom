@@ -277,6 +277,8 @@
     <Content Include="Views\ReferenceUser\Index.cshtml" />
     <Content Include="Views\ReferenceUser\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Decimal.cshtml" />
+    <Content Include="Views\YouOweMe\Success.cshtml" />
+    <Content Include="Views\Shared\_Layout.Result.Mobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

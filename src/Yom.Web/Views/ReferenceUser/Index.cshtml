@@ -1,19 +1,13 @@
 ﻿@model IEnumerable<Yom.Web.Models.ReferenceUser.ReferenceUserViewModel>
-
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.Single.Mobile.cshtml";
 }
-
 <div class="append-bottom">
-
-@Html.ActionLink("Create Reference User", "Create",null, new { data_role = "button" })
-
+    @Html.ActionLink("Create Reference User", "Create", null, new { data_role = "button" })
 </div>
-
-<ul data-role="listview" >
-@foreach (var item in Model)
-{ 
-            <li>@Html.ActionLink(item.ToString(), "Details", "ReferenceUser", new {id=item.Id },null)</li>
-}
+<ul data-role="listview" data-inset="true">
+    @foreach (var item in Model)
+    { 
+        <li>@Html.ActionLink(item.ToString(), "Details", "ReferenceUser", new { id = item.Id }, null)</li>
+    }
 </ul>

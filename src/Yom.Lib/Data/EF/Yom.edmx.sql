@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 02/06/2012 12:11:24
+-- Date Created: 02/14/2012 11:56:14
 -- Generated from EDMX file: C:\Users\mpodonyi\Desktop\Yom\src\Yom.Lib\Data\EF\Yom.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [Yom];
+USE [db266d57c4634e482082f89fd500994ef7];
 GO
 IF SCHEMA_ID(N'Yom') IS NULL EXECUTE(N'CREATE SCHEMA [Yom]');
 GO
@@ -17,34 +17,34 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[Yom].[FK_UserReferenceUser]', 'F') IS NOT NULL
-    ALTER TABLE [Yom].[ReferenceUsers] DROP CONSTRAINT [FK_UserReferenceUser];
-GO
-IF OBJECT_ID(N'[Yom].[FK_UserItem]', 'F') IS NOT NULL
-    ALTER TABLE [Yom].[Items] DROP CONSTRAINT [FK_UserItem];
-GO
 IF OBJECT_ID(N'[Yom].[FK_ItemOweItem]', 'F') IS NOT NULL
     ALTER TABLE [Yom].[OweItems] DROP CONSTRAINT [FK_ItemOweItem];
 GO
 IF OBJECT_ID(N'[Yom].[FK_ReferenceUserOweItem]', 'F') IS NOT NULL
     ALTER TABLE [Yom].[OweItems] DROP CONSTRAINT [FK_ReferenceUserOweItem];
 GO
+IF OBJECT_ID(N'[Yom].[FK_UserItem]', 'F') IS NOT NULL
+    ALTER TABLE [Yom].[Items] DROP CONSTRAINT [FK_UserItem];
+GO
+IF OBJECT_ID(N'[Yom].[FK_UserReferenceUser]', 'F') IS NOT NULL
+    ALTER TABLE [Yom].[ReferenceUsers] DROP CONSTRAINT [FK_UserReferenceUser];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[Yom].[Users]', 'U') IS NOT NULL
-    DROP TABLE [Yom].[Users];
-GO
-IF OBJECT_ID(N'[Yom].[ReferenceUsers]', 'U') IS NOT NULL
-    DROP TABLE [Yom].[ReferenceUsers];
-GO
 IF OBJECT_ID(N'[Yom].[Items]', 'U') IS NOT NULL
     DROP TABLE [Yom].[Items];
 GO
 IF OBJECT_ID(N'[Yom].[OweItems]', 'U') IS NOT NULL
     DROP TABLE [Yom].[OweItems];
+GO
+IF OBJECT_ID(N'[Yom].[ReferenceUsers]', 'U') IS NOT NULL
+    DROP TABLE [Yom].[ReferenceUsers];
+GO
+IF OBJECT_ID(N'[Yom].[Users]', 'U') IS NOT NULL
+    DROP TABLE [Yom].[Users];
 GO
 
 -- --------------------------------------------------
@@ -62,9 +62,9 @@ GO
 CREATE TABLE [Yom].[ReferenceUsers] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [UserId] bigint  NOT NULL,
-    [Mail] nvarchar(max)  NOT NULL,
-    [Firstname] nvarchar(max)  NULL,
-    [Lastname] nvarchar(max)  NULL
+    [Mail] nvarchar(256)  NOT NULL,
+    [Firstname] nvarchar(50)  NULL,
+    [Lastname] nvarchar(50)  NULL
 );
 GO
 

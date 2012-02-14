@@ -190,7 +190,7 @@ namespace Yom.Web.Controllers
 
                             FormsAuthentication.SetAuthCookie(response.ClaimedIdentifier, true);
                             //FormsService.SignIn(response.ClaimedIdentifier, false /* createPersistentCookie */);
-                            return RedirectToAction("Index", "home");
+                            return RedirectToAction("Details", "home");
                         }
                         ViewData["Message"] = "Error creating new user";
                         return View();
@@ -204,7 +204,7 @@ namespace Yom.Web.Controllers
                         return Redirect(returnUrl);
                     }
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Details", "Home");
                 case AuthenticationStatus.Canceled:
                     ViewData["Message"] = "Canceled at provider";
                     return View();

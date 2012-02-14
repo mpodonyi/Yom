@@ -2,49 +2,56 @@
     Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
     ViewBag.Title = "Authenticate";
 }
-<h2>
-    Sign In to YOM
-</h2>
-<p>
-    Welcome to YOM (You Owe Me). Yom has the following features:
-</p>
-<dl title="Feature list">
-    <dt>Debts</dt>
-    <dd>
-        Tracks information about who owes you money and how much. Keeps track about your
-        debts.</dd>
-    <dt>Reconciliation</dt>
-    <dd>
-        Tracks information about who pays his debts and if your debts are payed.</dd>
-</dl>
-@*<p>
+<div data-role="page" id="one">
+    <div data-role="header">
+        <h1>
+            Sign In to YOM
+        </h1>
+    </div>
+    <!-- /header -->
+    <div data-role="content">
+        <p>
+            Welcome to YOM (You Owe Me). Yom has the following features:
+        </p>
+        <dl title="Feature list">
+            <dt>Debts</dt>
+            <dd>
+                Tracks information about who owes you money and how much. Keeps track about your
+                debts.</dd>
+            <dt>Reconciliation</dt>
+            <dd>
+                Tracks information about who pays his debts and if your debts are payed.</dd>
+        </dl>
+        @*<p>
         Please enter your username and password. <%: Html.ActionLink("Register", "Register") %> if you don't have an account.
     </p>*@
-@using (Html.BeginForm(null, null, new { returnUrl = Request.QueryString["returnUrl"] }, FormMethod.Post, new { id = "openid_form", data_ajax = "false" }))
-{
-    @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
-    <div>
-        <fieldset>
-            <legend>Account Information</legend>
-            <div class="openid_choice">
-                <p>
-                    Please click your account provider:</p>
-                <div id="openid_btns">
-                </div>
+        @using (Html.BeginForm(null, null, new { returnUrl = Request.QueryString["returnUrl"] }, FormMethod.Post, new { id = "openid_form", data_ajax = "false" }))
+        {
+            @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+            <div>
+                <fieldset>
+                    <legend>Account Information</legend>
+                    <div class="openid_choice">
+                        <p>
+                            Please click your account provider:</p>
+                        <div id="openid_btns">
+                        </div>
+                    </div>
+                    <div id="openid_input_area">
+                        @Html.TextBox("openid_identifier")
+                        <input type="submit" value="Log On" />
+                    </div>
+                    <noscript>
+                        <p>
+                            OpenID is service that allows you to log-on to many different websites using a single
+                            indentity. Find out <a href="http://openid.net/what/">more about OpenID</a> and
+                            <a href="http://openid.net/get/">how to get an OpenID enabled account</a>.</p>
+                    </noscript>
+                </fieldset>
             </div>
-            <div id="openid_input_area">
-                @Html.TextBox("openid_identifier")
-                <input type="submit" value="Log On" />
-            </div>
-            <noscript>
-                <p>
-                    OpenID is service that allows you to log-on to many different websites using a single
-                    indentity. Find out <a href="http://openid.net/what/">more about OpenID</a> and
-                    <a href="http://openid.net/get/">how to get an OpenID enabled account</a>.</p>
-            </noscript>
-        </fieldset>
+        }
     </div>
-}
+</div>
 @section JSContent{
     <script type="text/javascript" src="@Url.Content("~/Scripts/openid-jquery.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/openid-en.js")"></script>

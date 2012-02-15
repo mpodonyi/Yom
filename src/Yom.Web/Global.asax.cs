@@ -17,6 +17,15 @@ namespace Yom.Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        void Application_BeginRequest(Object sender, EventArgs e)
+        {
+            if (HttpContext.Current.Request.AppRelativeCurrentExecutionFilePath == "~/")
+            {
+                Context.RewritePath("Home/Index");
+            }
+        } 
+
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());

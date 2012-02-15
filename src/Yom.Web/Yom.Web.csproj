@@ -98,13 +98,6 @@
     <Compile Include="Controllers\ReferenceUserController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\YouOweMeController.cs" />
-    <Compile Include="default.aspx.cs">
-      <DependentUpon>default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="default.aspx.designer.cs">
-      <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,7 +198,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
-    <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />

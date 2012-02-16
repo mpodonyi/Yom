@@ -9,8 +9,16 @@
             return (ViewData.ContainsKey("PageId") ? string.Format("id=\"{0}\"", ViewData["PageId"]) : "");
         }
     }
+
+    private string DataUrl
+    {
+        get
+        {
+            return (ViewData.ContainsKey("DataUrl") ? string.Format("data-url=\"{0}\"", ViewData["DataUrl"]) : "");
+        }
+    }
 }
-<div data-role="page" @Html.Raw(PageId)>
+<div data-role="page" @Html.Raw(PageId) @Html.Raw(DataUrl)>
     <div data-role="header">
         @RenderPage("~/Views/Shared/DefaultHeader.Mobile.cshtml")
     </div>

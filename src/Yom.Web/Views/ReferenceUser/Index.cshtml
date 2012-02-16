@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<Yom.Web.Models.ReferenceUser.ReferenceUserViewModel>
 @{
     ViewBag.Title = "Index";
+    ViewBag.DataUrl = "/ReferenceUser/Index";
 }
 <div class="append-bottom">
     @Html.ActionLink("Create Reference User", "Create", null, new { data_role = "button" })

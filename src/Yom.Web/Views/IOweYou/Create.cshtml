@@ -1,0 +1,29 @@
+﻿@model Yom.Web.Models.IOweYou.IOweYouCreateModel
+@{
+    ViewBag.Title = "Create";
+    ViewBag.PageId = "iOweYouCreate";
+}
+@using (Html.BeginForm(null, null, FormMethod.Post, new { data_ajax = "false" }))
+{
+    @Html.ValidationSummary(false)
+    <div data-role="fieldcontain">
+        @Html.LabelFor(model => model.Description)
+        @Html.EditorFor(model => model.Description)
+        @*@Html.ValidationMessageFor(model => model.Description)*@
+    </div>
+    <div data-role="fieldcontain">
+        @Html.LabelFor(model => model.Amount)
+        @Html.EditorFor(model => model.Amount, new { type = "number" })
+        @*@Html.ValidationMessageFor(model => model.Amount)*@
+
+    </div>
+    <div data-role="fieldcontain">
+        @Html.LabelFor(model => model.ReferenceUser)
+        
+        @Html.DropDownListFor(model => model.ReferenceUser, (IEnumerable<SelectListItem>)ViewBag.ReferenceUsers, new {  id="ReferenceUser" })
+        @*@Html.ValidationMessageFor(model => model.ReferenceId)*@
+    </div>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+}

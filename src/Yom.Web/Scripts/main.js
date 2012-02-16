@@ -4,7 +4,7 @@ $(document).delegate('div[data-role="page"]', "pageinit", function () {
     jQuery.validator.unobtrusive.parse("form");
 });
 
-$(document).delegate('#youOweMeCreate', "pageinit", function () {
+$(document).delegate('#youOweMeCreate, #iOweYouCreate, ', "pageinit", function () {
 
     $("#ReferenceUser", this).change(function (event) {
         if ($(this).val() == 'createnewreferenceuser') {

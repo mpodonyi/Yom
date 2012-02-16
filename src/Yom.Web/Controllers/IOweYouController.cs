@@ -6,19 +6,19 @@ using System.Web.Mvc;
 using Yom.Lib.Data.EF;
 using System.Data.Objects.SqlClient;
 using Yom.Web.Services;
-using Yom.Web.Models.YouOweMe;
+using Yom.Web.Models.IOweYou;
 using SystemControlCenter.Helper;
 using Yom.Web.Models.ReferenceUser;
 
 namespace Yom.Web.Controllers
 {
-    public class YouOweMeController : Controller
+    public class IOweYouController : Controller
     {
 
         private IReferenceUserService ReferenceUserService;
         private IDebtService DebtService;
 
-        public YouOweMeController(IDebtService debtService, IReferenceUserService referenceUserService)
+        public IOweYouController(IDebtService debtService, IReferenceUserService referenceUserService)
         {
             ReferenceUserService = referenceUserService;
             DebtService = debtService;
@@ -70,11 +70,11 @@ namespace Yom.Web.Controllers
         // POST: /YouOweMe/Create
 
         [HttpPost]
-        public ActionResult Create(YouOweMeCreateModel model)
+        public ActionResult Create(IOweYouCreateModel model)
         {
             if (ModelState.IsValid)
             {
-                var retVal = DebtService.Create(DebtType.YouOweMe, model.ReferenceUser, model.Amount, model.Description);
+                var retVal = DebtService.Create(DebtType.IOweYou, model.ReferenceUser, model.Amount, model.Description);
 
                 if (retVal.IsSuccessful)
                 {

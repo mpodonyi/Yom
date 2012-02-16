@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\IOweYouController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReferenceUserController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Helper\RedirectToPreviousAttribute.cs" />
     <Compile Include="Helper\SelectListHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\IOweYou\IOweYouCreateModel.cs" />
     <Compile Include="Models\ReferenceUser\ReferenceUserViewModel.cs" />
     <Compile Include="Models\ReferenceUser\ReferenceUserCreateModel.cs" />
     <Compile Include="Models\Share\ShareCreateModel.cs" />
@@ -273,6 +275,8 @@
     <Content Include="Views\YouOweMe\Success.cshtml" />
     <Content Include="Views\Shared\_Layout.Result.Mobile.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\IOweYou\Create.cshtml" />
+    <Content Include="Views\IOweYou\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -9,6 +9,7 @@ namespace Yom.Web.Models.YouOweMe
     public class YouOweMeCreateModel
     {
         [DataType(DataType.MultilineText)]
+        [Required]
         public string Description { get; set; }
 
         [Range(typeof(decimal),"0.01","10000")]

@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
     ViewBag.Title = "Authenticate";
 }
-<div data-role="page" id="one">
+<div data-role="page" >
     <div data-role="header">
         <h1>
             Sign In to YOM
@@ -10,18 +10,6 @@
     </div>
     <!-- /header -->
     <div data-role="content">
-        <p>
-            Welcome to YOM (You Owe Me). Yom has the following features:
-        </p>
-        <dl title="Feature list">
-            <dt>Debts</dt>
-            <dd>
-                Tracks information about who owes you money and how much. Keeps track about your
-                debts.</dd>
-            <dt>Reconciliation</dt>
-            <dd>
-                Tracks information about who pays his debts and if your debts are payed.</dd>
-        </dl>
         @*<p>
         Please enter your username and password. <%: Html.ActionLink("Register", "Register") %> if you don't have an account.
     </p>*@
@@ -51,8 +39,17 @@
             </div>
         }
     </div>
+    <link href="@Url.Content("~/Content/openid.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/openid-jquery.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/openid-en.js")"></script>
+    <script type="text/javascript">
+       // $(document).ready(function () {
+            //$.mobile.ajaxEnabled = false;
+            openid.init('openid_identifier');
+        //});
+    </script>
 </div>
-@section JSContent{
+@*@section JSContent{
     <script type="text/javascript" src="@Url.Content("~/Scripts/openid-jquery.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/openid-en.js")"></script>
     <script type="text/javascript">
@@ -63,5 +60,5 @@
     </script>
 }
 @section CSSContent{
-    <link href="@Url.Content("~/Content/openid.css")" rel="stylesheet" type="text/css" />
-}
+    
+}*@ 

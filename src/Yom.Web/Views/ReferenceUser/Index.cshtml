@@ -6,7 +6,7 @@
 <div class="append-bottom">
     @Html.ActionLink("Create Reference User", "Create", null, new { data_role = "button" })
 </div>
-<ul data-role="listview" data-inset="true">
+<ul data-role="listview" >
     @foreach (var item in Model)
     { 
         <li>@Html.ActionLink(item.ToString(), "Details", "ReferenceUser", new { id = item.Id }, null)</li>

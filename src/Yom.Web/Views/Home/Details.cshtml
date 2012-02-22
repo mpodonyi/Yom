@@ -1,53 +1,14 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+    ViewBag.Title = "Details";
 }
-<!-- Start of first page: #one -->
-<div data-role="page" >
-    <div data-role="header">
-    @RenderPage("~/Views/Shared/DefaultHeader.Mobile.cshtml")
+<fieldset class="ui-grid-a">
+    <legend></legend>
+    <div class="ui-block-a">
+        @Html.ActionLink("Owe", "Index", "Owe", null, new { data_role = "button" })
     </div>
-    <!-- /header -->
-    <div data-role="content">
-        <fieldset class="ui-grid-a">
-            <legend></legend>
-            <div class="ui-block-a">
-                <a href="#owe" data-role="button">Owe</a>
-            </div>
-            <div class="ui-block-b">
-                <a href="#pay" data-role="button">Pay</a>
-            </div>
-            <div class="ui-block-a">
-                <a href="#report" data-role="button">Report</a></div>
-        </fieldset>
+    <div class="ui-block-b">
+        <a href="#pay" data-role="button">Pay</a>
     </div>
-    <!-- /content -->
-    <div data-role="footer" data-theme="d">
-        <h4>
-            Page Footer</h4>
-    </div>
-    <!-- /footer -->
-</div>
-<!-- /page one -->
-<!-- Start of second page: #two -->
-<div data-role="page" id="owe" >
-    <div data-role="header">
-    @RenderPage("~/Views/Shared/DefaultHeader.Mobile.cshtml")
-    </div>
-    <!-- /header -->
-    <div data-role="content" >
-        <ul data-role="listview" data-inset="true">
-            <li>@Html.ActionLink("You Owe Me Money","Create","YouOweMe")</li>
-            <li>@Html.ActionLink("I Owe You Money","Create","IOweYou")</li>
-        </ul>
-        @*@Html.ActionLink("You Owe Me", "Create", "YouOweMe", null, new { data_role = "button" })*@
-    </div>
-    <!-- /content -->
-    <div data-role="footer">
-        <h4>
-            Page Footer</h4>
-    </div>
-    <!-- /footer -->
-</div>
-<!-- /page two -->
-<!-- Start of third page: #popup -->
-
+    <div class="ui-block-a">
+        <a href="#report" data-role="button">Report</a></div>
+</fieldset>

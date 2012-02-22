@@ -1,7 +1,24 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
 }
-<div data-role="page">
+@functions{
+    private string PageId
+    {
+        get
+        {
+            return (ViewData.ContainsKey("PageId") ? string.Format("id=\"{0}\"", ViewData["PageId"]) : "");
+        }
+    }
+
+    private string DataUrl
+    {
+        get
+        {
+            return (ViewData.ContainsKey("DataUrl") ? string.Format("data-url=\"{0}\"", ViewData["DataUrl"]) : "");
+        }
+    }
+}
+<div data-role="page" @Html.Raw(PageId) @Html.Raw(DataUrl)>
     
     <!-- /header -->
     <div data-role="content">

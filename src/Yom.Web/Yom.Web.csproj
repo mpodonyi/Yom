@@ -97,6 +97,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\IOweYouController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OweController.cs" />
     <Compile Include="Controllers\ReferenceUserController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\YouOweMeController.cs" />
@@ -277,6 +278,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\IOweYou\Create.cshtml" />
     <Content Include="Views\IOweYou\Success.cshtml" />
+    <Content Include="Views\Owe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Yom.Web.Models.ReferenceUser;
-using Yom.Web.Services;
+using Yom.Lib.Services;
 using Yom.Web.Helper;
 
 namespace Yom.Web.Controllers

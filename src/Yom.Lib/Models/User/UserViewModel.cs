@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Yom.Web.Models.User
+namespace Yom.Lib.Models.User
 {
     public class UserViewModel
     {

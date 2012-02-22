@@ -5,7 +5,7 @@ using System.Web;
 using Yom.Lib.Data.EF;
 using System.Data.EntityClient;
 
-namespace Yom.Web.Services
+namespace Yom.Lib.ServicesImpl
 {
     public abstract class BaseService
     {

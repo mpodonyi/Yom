@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Security;
-using Yom.Web.Models.User;
-using Yom.Lib.Data.EF;
-using Yom.Web.Data;
+﻿using Yom.Lib.Data;
 
-namespace Yom.Web.Services
+namespace Yom.Lib.Services
 {
     public enum DebtType
     {

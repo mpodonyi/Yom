@@ -7,7 +7,8 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using System.Reflection;
-using Yom.Web.Services;
+using Yom.Lib.Services;
+using Yom.Lib.ServicesImpl;
 using System.Data.EntityClient;
 
 namespace Yom.Web

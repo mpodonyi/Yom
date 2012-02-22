@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Security;
-using Yom.Web.Models.User;
+﻿using System.Collections.Generic;
 using Yom.Lib.Data.EF;
 
-namespace Yom.Web.Services
+namespace Yom.Lib.Services
 {
     public interface IReferenceUserService
     {

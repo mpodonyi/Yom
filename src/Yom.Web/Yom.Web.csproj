@@ -112,17 +112,8 @@
     <Compile Include="Models\ReferenceUser\ReferenceUserCreateModel.cs" />
     <Compile Include="Models\Share\ShareCreateModel.cs" />
     <Compile Include="Models\Share\ShareItemCreateModel.cs" />
-    <Compile Include="Models\User\UserViewModel.cs" />
     <Compile Include="Models\YouOweMe\YouOweMeCreateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BaseService.cs" />
-    <Compile Include="Services\DebtsService.cs" />
-    <Compile Include="Services\IDebtService.cs" />
-    <Compile Include="Services\OperationResult.cs" />
-    <Compile Include="Services\ReferenceUserService.cs" />
-    <Compile Include="Services\IReferenceUserService.cs" />
-    <Compile Include="Services\IUserService.cs" />
-    <Compile Include="Services\UserService.cs" />
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

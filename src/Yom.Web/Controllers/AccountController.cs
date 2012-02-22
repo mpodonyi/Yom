@@ -10,8 +10,8 @@ using DotNetOpenAuth.OpenId.RelyingParty;
 using DotNetOpenAuth.OpenId;
 using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
 using DotNetOpenAuth.Messaging;
-using Yom.Web.Services;
-using Yom.Web.Models.User;
+using Yom.Lib.Services;
+using Yom.Lib.Models.User;
 
 namespace Yom.Web.Controllers
 {
@@ -21,9 +21,9 @@ namespace Yom.Web.Controllers
 
         IUserService UserService;
 
-        public AccountController()
+        public AccountController(IUserService userService)
         {
-            UserService = new UserService();
+            UserService = userService;
         }
 
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Security;
-using Yom.Web.Models.User;
+using Yom.Lib.Models.User;
 
-namespace Yom.Web.Services
+namespace Yom.Lib.Services
 {
     public interface IUserService
     {

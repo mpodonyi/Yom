@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
-using Yom.Web.Models.User;
+using Yom.Lib.Models.User;
 using Yom.Lib.Data.EF;
+using Yom.Lib.Services;
 
-namespace Yom.Web.Services
+namespace Yom.Lib.ServicesImpl
 {
     public class UserService :BaseService, IUserService
     {

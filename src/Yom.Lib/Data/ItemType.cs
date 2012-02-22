@@ -8,6 +8,8 @@ namespace Yom.Lib.Data
     public enum ItemType
     {
         IOweYou = 1,
-        YouOweMe = 2
+        YouOweMe = 2,
+        IPayYou = 3,
+        YouPayMe = 4,
     }
 }

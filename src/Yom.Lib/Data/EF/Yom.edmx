@@ -125,7 +125,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Item" EntitySet="Items" />
           </AssociationSet>
-          <EntitySet Name="OweItems" EntityType="Yom.OweItem" />
           <AssociationSet Name="ItemOweItem" Association="Yom.ItemOweItem">
             <End Role="Item" EntitySet="Items" />
             <End Role="OweItem" EntitySet="OweItems" />
@@ -134,7 +133,13 @@
             <End Role="ReferenceUser" EntitySet="ReferenceUsers" />
             <End Role="OweItem" EntitySet="OweItems" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="OweItems" EntityType="Yom.OweItem" />
+          <EntitySet Name="PayItems" EntityType="Yom.PayItem" />
+          <AssociationSet Name="ItemPayItem" Association="Yom.ItemPayItem">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="PayItem" EntitySet="PayItems" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -175,6 +180,7 @@
           <NavigationProperty Name="User" Relationship="Yom.UserItem" FromRole="Item" ToRole="User" />
           <Property Type="Int64" Name="UserId" Nullable="false" />
           <NavigationProperty Name="OweItem" Relationship="Yom.ItemOweItem" FromRole="Item" ToRole="OweItem" />
+          <NavigationProperty Name="PayItems" Relationship="Yom.ItemPayItem" FromRole="Item" ToRole="PayItem" />
         </EntityType>
         <Association Name="UserItem">
           <End Type="Yom.User" Role="User" Multiplicity="1" />
@@ -189,9 +195,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityType Name="OweItem">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Type="String" Name="Description" Nullable="false" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Scale="2" />
@@ -218,6 +221,24 @@
             </Principal>
             <Dependent Role="OweItem">
               <PropertyRef Name="ReferenceUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PayItem">
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Scale="2" />
+          <Property Type="Int64" Name="ReferenceUser" Nullable="false" />
+        </EntityType>
+        <Association Name="ItemPayItem">
+          <End Type="Yom.Item" Role="Item" Multiplicity="1" />
+          <End Type="Yom.PayItem" Role="PayItem" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PayItem">
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -255,17 +276,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OweItems">
-      <EntityTypeMapping TypeName="IsTypeOf(Yom.OweItem)">
-        <MappingFragment StoreEntitySet="OweItems">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="ReferenceUser" ColumnName="ReferenceUser" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
+          <EntitySetMapping Name="OweItems">
+            <EntityTypeMapping TypeName="IsTypeOf(Yom.OweItem)" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+              <MappingFragment StoreEntitySet="OweItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReferenceUser" ColumnName="ReferenceUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
@@ -307,7 +328,13 @@
           <ConnectorPoint PointX="5.5" PointY="2.4802864583333331" />
           <ConnectorPoint PointX="5.5" PointY="3.5" />
         </AssociationConnector>
-      </Diagram>
+        <EntityTypeShape EntityType="Yom.PayItem" Width="1.5" PointX="4.625" PointY="5.875" Height="1.7879850260416665" />
+        <AssociationConnector Association="Yom.ItemPayItem">
+          <ConnectorPoint PointX="2.0625" PointY="5.172587890625" />
+          <ConnectorPoint PointX="2.0625" PointY="6.7689925130208337" />
+          <ConnectorPoint PointX="4.625" PointY="6.7689925130208337" />
+        </AssociationConnector>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

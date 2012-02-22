@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.Result.Mobile.cshtml";
+    ViewBag.DataUrl = "/IPayYou/Success";
+}
+<div class="append-bottom">
+    Success
+</div>
+<ul data-role="listview" data-inset="true">
+    <li>@Html.ActionLink("Create another", "Create")</li>
+    <li>@Html.ActionLink("Back to main menu", "Index", "Home")</li>
+</ul>

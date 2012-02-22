@@ -96,17 +96,10 @@ namespace Yom.Web
 
         private void RegisterObjects(ContainerBuilder builder)
         {
-            //builder.RegisterAssemblyTypes(typeof(IAuthenticationService).Assembly)
-            //                .Where(t => t.Name.EndsWith("Service"))
-            //                .AsImplementedInterfaces()
-            //                .InstancePerHttpRequest();
-
-
-            builder.RegisterType<UserService>().As<IUserService>().InstancePerHttpRequest();
-
-            builder.RegisterType<ReferenceUserService>().As<IReferenceUserService>().InstancePerHttpRequest();
-
-            builder.RegisterType<DebtService>().As<IDebtService>().InstancePerHttpRequest();
+            builder.RegisterAssemblyTypes(typeof(IUserService).Assembly)
+                            .Where(t => t.Name.EndsWith("Service"))
+                            .AsImplementedInterfaces()
+                            .InstancePerHttpRequest();
         }
 
     }

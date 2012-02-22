@@ -95,6 +95,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PayController.cs" />
+    <Compile Include="Controllers\YouPayMeController.cs" />
+    <Compile Include="Controllers\IPayYouController.cs" />
     <Compile Include="Controllers\IOweYouController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OweController.cs" />
@@ -107,6 +110,8 @@
     <Compile Include="Helper\RedirectToPreviousAttribute.cs" />
     <Compile Include="Helper\SelectListHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\YouPayMe\YouPayMeCreateModel.cs" />
+    <Compile Include="Models\IPayYou\IPayYouCreateModel.cs" />
     <Compile Include="Models\IOweYou\IOweYouCreateModel.cs" />
     <Compile Include="Models\ReferenceUser\ReferenceUserViewModel.cs" />
     <Compile Include="Models\ReferenceUser\ReferenceUserCreateModel.cs" />
@@ -270,6 +275,11 @@
     <Content Include="Views\IOweYou\Create.cshtml" />
     <Content Include="Views\IOweYou\Success.cshtml" />
     <Content Include="Views\Owe\Index.cshtml" />
+    <Content Include="Views\Pay\Index.cshtml" />
+    <Content Include="Views\IPayYou\Create.cshtml" />
+    <Content Include="Views\IPayYou\Success.cshtml" />
+    <Content Include="Views\YouPayMe\Create.cshtml" />
+    <Content Include="Views\YouPayMe\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

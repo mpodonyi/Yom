@@ -54,17 +54,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Database.cs" />
-    <Compile Include="Data\EF\Yom.Context.partial.cs" />
-    <Compile Include="Data\EF\Yom.Context1.cs">
+    <Compile Include="Data\EF\Item.cs">
+      <DependentUpon>Yom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\OweItem.cs">
+      <DependentUpon>Yom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\PayItem.cs">
+      <DependentUpon>Yom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\ReferenceUser.cs">
+      <DependentUpon>Yom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\User.cs">
+      <DependentUpon>Yom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Yom.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Yom.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\EF\Yom.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Yom.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Data\EF\Yom.Context.partial.cs" />
     <Compile Include="Data\EF\Yom.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,9 +108,11 @@
     <None Include="App.Config" />
     <None Include="Data\EF\Yom.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Yom.Context.cs</LastGenOutput>
     </None>
     <EntityDeploy Include="Data\EF\Yom.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Yom.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Data\EF\Yom.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

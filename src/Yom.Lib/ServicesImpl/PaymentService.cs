@@ -28,7 +28,7 @@ namespace Yom.Lib.ServicesImpl
                     {
                         Type = (short)paymentType,
                         UserId = UserService.UserGetCurrent().Id,
-                        OweItem = new OweItem
+                        PayItem = new PayItem
                         {
                             Amount = amount,
                             ReferenceUser = referenceUserId,

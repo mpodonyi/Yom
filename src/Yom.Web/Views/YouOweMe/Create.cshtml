@@ -20,7 +20,7 @@
     <div data-role="fieldcontain">
         @Html.LabelFor(model => model.ReferenceUser)
         
-        @Html.DropDownListFor(model => model.ReferenceUser, (IEnumerable<SelectListItem>)ViewBag.ReferenceUsers, new {  id="ReferenceUser" })
+        @Html.DropDownListFor(model => model.ReferenceUser, (IEnumerable<SelectListItem>)ViewBag.ReferenceUsers, new {  id="ReferenceUser", data_native_menu="false" })
         @*@Html.ValidationMessageFor(model => model.ReferenceId)*@
     </div>
     <p>

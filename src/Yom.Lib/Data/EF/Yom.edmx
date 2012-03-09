@@ -181,8 +181,8 @@
             <End Role="Item" EntitySet="Items" />
             <End Role="PayItem" EntitySet="PayItems" />
           </AssociationSet>
-          <AssociationSet Name="ReferenceUserPayItem" Association="Yom.ReferenceUserPayItem">
-            <End Role="ReferenceUser" EntitySet="ReferenceUsers" />
+          <AssociationSet Name="OweItemPayItem" Association="Yom.OweItemPayItem">
+            <End Role="OweItem" EntitySet="OweItems" />
             <End Role="PayItem" EntitySet="PayItems" />
           </AssociationSet>
         </EntityContainer>
@@ -278,9 +278,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Type="String" Name="Description" Nullable="false" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Scale="2" />
-          <Property Type="Int64" Name="ReferenceUser" Nullable="false" />
+          <Property Type="Int64" Name="OweItemId" Nullable="false" ConcurrencyMode="None" />
         </EntityType>
         <Association Name="ItemPayItem">
           <End Type="Yom.Item" Role="Item" Multiplicity="1" />
@@ -294,17 +293,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ReferenceUserPayItem">
-          <End Type="Yom.ReferenceUser" Role="ReferenceUser" Multiplicity="1" />
+        <Association Name="OweItemPayItem">
+          <End Type="Yom.OweItem" Role="OweItem" Multiplicity="1" />
           <End Type="Yom.PayItem" Role="PayItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReferenceUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PayItem">
-              <PropertyRef Name="ReferenceUser" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -354,9 +345,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(Yom.PayItem)">
         <MappingFragment StoreEntitySet="PayItems">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="ReferenceUser" ColumnName="ReferenceUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -396,24 +385,21 @@
         <EntityTypeShape EntityType="Yom.OweItem" Width="2" PointX="5.25" PointY="3.5" Height="1.7879850260416665" />
         <AssociationConnector Association="Yom.ItemOweItem">
           <ConnectorPoint PointX="3.375" PointY="4.3362939453125" />
-          <ConnectorPoint PointX="4.229166666666667" PointY="4.3362939453124989" />
-          <ConnectorPoint PointX="4.395833333333333" PointY="4.3362939453125" />
           <ConnectorPoint PointX="5.25" PointY="4.3362939453125" />
         </AssociationConnector>
         <AssociationConnector Association="Yom.ReferenceUserOweItem">
           <ConnectorPoint PointX="5.5" PointY="2.4802864583333331" />
           <ConnectorPoint PointX="5.5" PointY="3.5" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="Yom.PayItem" Width="1.5" PointX="5.625" PointY="6.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Yom.PayItem" Width="3.5" PointX="5.625" PointY="6.25" Height="1.5956835937499996" />
         <AssociationConnector Association="Yom.ItemPayItem">
           <ConnectorPoint PointX="2.0625" PointY="5.172587890625" />
-          <ConnectorPoint PointX="2.0625" PointY="7.4327096814576832" />
-          <ConnectorPoint PointX="5.625" PointY="7.4327096814576832" />
+          <ConnectorPoint PointX="2.0625" PointY="7.047841796875" />
+          <ConnectorPoint PointX="5.625" PointY="7.047841796875" />
         </AssociationConnector>
-        <AssociationConnector Association="Yom.ReferenceUserPayItem">
-          <ConnectorPoint PointX="4.3125" PointY="2.4802864583333331" />
-          <ConnectorPoint PointX="4.3125" PointY="6.8101023407288412" />
-          <ConnectorPoint PointX="5.625" PointY="6.8101023407288412" />
+        <AssociationConnector Association="Yom.OweItemPayItem">
+          <ConnectorPoint PointX="6.4375" PointY="5.2879850260416665" />
+          <ConnectorPoint PointX="6.4375" PointY="6.25" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

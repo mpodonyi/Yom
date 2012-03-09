@@ -15,9 +15,8 @@ namespace Yom.Lib.Data.EF
     public partial class PayItem
     {
         public long Id { get; set; }
-        public string Description { get; set; }
         public decimal Amount { get; set; }
-        public long ReferenceUser { get; set; }
+        public long OweItemId { get; set; }
     }
     
 }

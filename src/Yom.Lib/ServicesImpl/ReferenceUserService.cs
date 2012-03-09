@@ -9,7 +9,7 @@ using Yom.Lib.Services;
 
 namespace Yom.Lib.ServicesImpl
 {
-    public class ReferenceUserService :BaseService, IReferenceUserService
+    public class ReferenceUserService : BaseService, IReferenceUserService
     {
         private IUserService UserService;
 
@@ -35,7 +35,7 @@ namespace Yom.Lib.ServicesImpl
                         UserId = UserService.UserGetCurrent().Id,
 
                     });
-                    
+
                     container.SaveChanges();
                 }
 
@@ -62,5 +62,44 @@ namespace Yom.Lib.ServicesImpl
         }
 
         #endregion
+
+
+
+
+
+
+        public IEnumerable<UserDebtViewModel> GetOutstandingDebtUser(PaymentType debtType)
+        {
+            long userId = UserService.UserGetCurrent().Id;
+
+            using (YomContainer container = GetYomContainer())
+            {
+                var payitems = from i in container.Items
+                               join oi in container.PayItems on i.Id equals oi.Id
+                               where i.Type == (short)debtType &&
+                               i.UserId == userId
+                               group oi by new { i.UserId, oi.OweItemId } into k
+                               select new
+                               {
+                                   OweItemId = k.Key.OweItemId,
+                                   UserId = k.Key.UserId,
+                                   Amount = k.Sum(a => a.Amount)
+                               };
+
+                var oweitems = from i in container.Items
+                               join oi in container.OweItems on i.Id equals oi.Id into k
+                               where i.Type == (short)DebtType.YouOweMe &&
+                                  i.UserId == userId
+                               select k;
+
+            //    var ttt = oweitems.Distinct()
+
+
+
+
+            }
+
+        }
+
     }
 }
